@@ -1,6 +1,8 @@
 # Monitoring-and-Alerting-System-for-Linux-Machines
 This project demonstrates an efficient, low-cost monitoring and alerting system for Linux based machines. It leverages Prometheus and Node Exporter for real-time data collection and Grafana for visualizing performance metrics, enabling proactive identification of issues. Alertmanager ensures timely alert for risk and resource management.
 
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
 Linux System Monitoring: Prometheus, Grafana, and Alertmanager 🚀
 This project is a culmination of my thesis work with Baylon Cloud in Rome. It demonstrates the power and efficiency of a low-cost monitoring solution for Linux machines using a stack of powerful open-source tools: Prometheus, Node Exporter, Grafana, and Alertmanager.
 
@@ -21,3 +23,12 @@ My Journey: Challenges and Successes 💪
 This project was a fantastic challenge! From the initial setup, where I implemented a robust security model, to creating a centralized alerting system, every step was a learning experience. The final alert system, which sends alerts directly to my Google account, was a particularly rewarding part of the process.
 
 This project not only met its initial goals but went above and beyond, integrating key security and efficiency improvements. I'm proud of the result and excited to share it with the community!
+
+Repository Contents 📦
+This repository contains the full code and configuration files for the monitoring stack developed during my thesis. The structure mirrors the content of the thesis itself, making it easy to navigate and understand each component.
+
+config/: All the essential YAML configuration files for Prometheus, Alertmanager, and Node Exporter.
+
+dashboards/: The JSON files for the Grafana dashboards, ready for you to import and use.
+
+scripts/: Useful shell scripts for installation, setup, and service management.
