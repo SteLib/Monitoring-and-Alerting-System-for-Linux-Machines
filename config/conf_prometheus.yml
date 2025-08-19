@@ -1,0 +1,29 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus' #job di se stesso
+    static_configs:
+      - targets: ['localhost:9090'] 
+  - job_name: 'node' #per estrarre metriche della macchina corrente
+    static_configs:
+      - targets: ['localhost:9100']
+  - job_name: 'alertmanager' # job per Alertmanager
+    static_configs:
+      - targets: ['localhost:9093']
+# per l'estrazione di una macchina remota 
+  - job_name: 'node_exporter_macchina' 
+    static_configs:
+      - targets: ['xxx.xxx.xxx.xxx:9100']
+
+# collegamento ad alertmanager installato sulla porta 9093
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - localhost:9093
+
+# i .yml degli alert si trovano tutti in una sottodirectory chiamata rules
+rule_files: 
+  - "rules/alert_rules_prova.yml" 
+  - "rules/alert_cpu.yml"
