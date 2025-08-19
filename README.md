@@ -29,7 +29,6 @@ This repository contains the full code and configuration files for the monitorin
 
 - `config/`: All the essential **YAML** configuration files for Prometheus, Alertmanager, and Node Exporter.
 - `dashboards/`: The **JSON** files for the Grafana dashboards, ready for you to import and use.
-- `scripts/`: Useful shell scripts for installation, setup, and service management.
  
 ---
 
