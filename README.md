@@ -5,7 +5,7 @@ This project demonstrates an efficient monitoring and alerting system for Linux 
 
 ### Linux System Monitoring: Prometheus, Grafana, and Alertmanager 📈
 
-This project is a culmination of my thesis work with **Baylon Cloud** in Rome. It demonstrates the power and efficiency of a low-cost monitoring solution for Linux machines using a stack of powerful open-source tools. The system proves that you don't need to break the bank to get a complete view of your machine's health and performance.
+This project is a culmination of my thesis work with **Baylon Cloud S.p.A** in Rome. It demonstrates the power and efficiency of a low-cost monitoring solution for Linux machines using a stack of powerful open-source tools. The system proves that you don't need to break the bank to get a complete view of your machine's health and performance.
 
 #### Key Features ✨
 
