@@ -1,0 +1,22 @@
+global:
+  resolve_timeout: 10s #tempo che alertmanager attende prima di considerare un allarme risolto
+  smtp_from: 'xxxxxxx' #indirizzo a cui arriveranno le notifiche
+  smtp_smarthost: 'smtp.gmail.com:587' #definisce la porta e l'indirizzo che verrà usato come mittente per le notifiche di allertManager
+  smtp_auth_username: 'xxxxxxxxxx@gmail.com'
+  smtp_auth_password: 'xxxxxxxxxx'
+  smtp_require_tls: true
+
+route:  #gli allarmi in arrivo vengono processati in questa sezione
+  group_by: ['alertname','severity']  #allarmi raggrupati per etichetta alertname 
+  group_wait: 5s #quanto tempo attende alertmanager prima di inviare la notifica per un nuovo gruppo di allarmi
+  group_interval: 10s  #intervallo di tempo per le notifiche succesive per un gruppo di allarmi 
+  repeat_interval: 10s #se l'allarme rimane attivo oltre il group_interval invierà notifiche ripetute a questo intervallo di tempo
+  receiver: 'email'
+
+receivers:
+- name: 'email' #nome referenziato in route 
+  email_configs:
+  - to: 'xxxxxxxxxx@gmail.com' #indirzzo email del destinatario a cui arrivano le notifiche 
+
+
+
