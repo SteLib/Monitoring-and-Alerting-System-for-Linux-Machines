@@ -1,0 +1,15 @@
+groups:
+- name: cpu_alert # il nome del gruppo a cui appartiene
+  rules:
+  - alert: TooRunningProcess # Nome dell'alert
+    expr: node_procs_running > 10 # Condizione: processi in esecuzione > 10
+    for: 2s # L'alert scatta se la condizione persiste per 2 secondi
+    labels:
+      severity: low  # Livello di gravità dell'alert
+      category: resources # Categoria dell'alert
+    annotations:
+    # Breve descrizione con l'istanza che ha generato l'alert
+      summary: "Troppi processi in esecuzione (istanza {{ \$labels.instance }})"
+    # Dettagli sull'alert, inclusi il valore che l'ha scatenato e le etichette
+      description: "I processi in stato di running sono maggiori di 1\n
+                    VALORE = {{ $value }}\n  ETICHETTE: {{ $labels }}" 
