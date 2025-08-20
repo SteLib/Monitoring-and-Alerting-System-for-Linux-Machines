@@ -24,6 +24,6 @@ alerting:
       - localhost:9093
 
 # i .yml degli alert si trovano tutti in una sottodirectory chiamata rules
-rule_files: 
+alert_rules: 
   - "rules/alert_rules_prova.yml" 
   - "rules/alert_cpu.yml"
