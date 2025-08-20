@@ -9,7 +9,7 @@ groups:
       category: resources # Categoria dell'alert
     annotations:
     # Breve descrizione con l'istanza che ha generato l'alert
-      summary: "Troppi processi in esecuzione (istanza {{ \$labels.instance }})"
+      summary: "Troppi processi in esecuzione (istanza {{ $labels.instance }})"
     # Dettagli sull'alert, inclusi il valore che l'ha scatenato e le etichette
       description: "I processi in stato di running sono maggiori di 1\n
                     VALORE = {{ $value }}\n  ETICHETTE: {{ $labels }}" 
