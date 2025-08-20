@@ -1,0 +1,15 @@
+groups:
+- name: cpu_alert # the name of the group it belongs to
+  rules:
+  - alert: TooRunningProcess # Name of the alert
+    expr: node_procs_running > 10 # Condition: running processes > 10
+    for: 2s # The alert fires if the condition persists for 2 seconds
+    labels:
+      severity: low  # Severity level of the alert
+      category: resources # Category of the alert
+    annotations:
+    # Brief description with the instance that generated the alert
+      summary: "Too many running processes (instance {{ $labels.instance }})"
+    # Details about the alert, including the value that triggered it and the labels
+      description: "Processes in a running state are greater than 10\n
+                      VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
