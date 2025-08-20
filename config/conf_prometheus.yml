@@ -26,4 +26,4 @@ alerting:
 # The alert .yml files are all located in a subdirectory called alert_rule
 rule_files: 
   - "alert_rule/test_alert_rule.yml" 
-  - "alert_rule/alert_cpu.yml"
+  - "alert_rule/alert_disk_usage.yml"
