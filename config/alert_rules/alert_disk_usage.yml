@@ -1,0 +1,38 @@
+groups:
+  - name: alert_disk
+    rules:
+      - alert: HighDiskUsage
+        expr: (1 -
+          (node_filesystem_avail_bytes{fstype!="tmpfs",mountpoint!~"^/run.*|^/dev.*"}
+          /
+          node_filesystem_size_bytes{fstype!="tmpfs",mountpoint!~"^/run.*|^/dev.*"}))
+          * 100 > 85
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: High disk usage (instance {{ $labels.instance }}, mountpoint {{
+            $labels.mountpoint }})
+          description: |
+            Disk usage is > 85%
+              VALUE = {{ $value }}%
+              LABELS: {{ $labels }}
+              MOUNTPOINT = {{ $labels.mountpoint }}
+          troubleshooting: |
+            - Analysis of the aforementioned disk usage:
+              - Use the df -h command for an overview of disk space.
+              - Identify the largest directories and files using du -sh * or du -sh /path/to/directory/* to narrow down the problem area.
+              - Specifically inspect log directories for large files.
+
+            - Immediate actions to free up space:
+              - Delete or compress old and non-essential log files, possibly also configuring automatic management.
+              - Clear the package manager's cache (e.g., sudo apt clean and sudo apt autoremove for this case).
+              - Remove temporary files from the /tmp directory.
+              - Uninstall software or packages no longer in use.
+              - Consider moving less frequently accessed data or backups to another partition or external storage.
+
+            - Long-term solutions and prevention:
+              - Increase capacity: If high usage is persistent, it is advisable to increase the size of the partition or disk, and then restart the system.
+              - Cleaning automation: Develop automatic scripts for the periodic removal of temporary files, cache, or old backups.
+              - Architectural review: Analyze the root causes of high data generation or storage inefficiencies in the application architecture.
+              - Infrastructure scalability: Consider adding new machines or adopting distributed storage solutions or scalable cloud services to manage data expansion.
