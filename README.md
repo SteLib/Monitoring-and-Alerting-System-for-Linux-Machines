@@ -28,7 +28,7 @@ This project not only met its initial goals but went above and beyond, integrati
 This repository contains the full code and configuration files for the monitoring stack developed during my thesis. The structure mirrors the content of the thesis itself, making it easy to navigate and understand each component.
 
 - `config/`: All the essential **YAML** configuration files for Prometheus, Alertmanager, and Node Exporter.
-- `dashboards/`: The **JSON** files for the Grafana dashboards, ready for you to import and use.
+- `grafana_dashboards/`: The **JSON** files for the Grafana dashboards, ready for you to import and use.
  
 ---
 
