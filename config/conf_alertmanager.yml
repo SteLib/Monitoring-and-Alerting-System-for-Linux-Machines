@@ -1,22 +1,19 @@
 global:
-  resolve_timeout: 10s #tempo che alertmanager attende prima di considerare un allarme risolto
-  smtp_from: 'xxxxxxx' #indirizzo a cui arriveranno le notifiche
-  smtp_smarthost: 'smtp.gmail.com:587' #definisce la porta e l'indirizzo che verrà usato come mittente per le notifiche di allertManager
+  resolve_timeout: 10s #time alertmanager waits before considering an alert resolved
+  smtp_from: 'xxxxxxx' #address that will receive the notifications
+  smtp_smarthost: 'smtp.gmail.com:587' #defines the address and port that will be used as the sender for alertManager notifications
   smtp_auth_username: 'xxxxxxxxxx@gmail.com'
   smtp_auth_password: 'xxxxxxxxxx'
   smtp_require_tls: true
 
-route:  #gli allarmi in arrivo vengono processati in questa sezione
-  group_by: ['alertname','severity']  #allarmi raggrupati per etichetta alertname 
-  group_wait: 5s #quanto tempo attende alertmanager prima di inviare la notifica per un nuovo gruppo di allarmi
-  group_interval: 10s  #intervallo di tempo per le notifiche succesive per un gruppo di allarmi 
-  repeat_interval: 10s #se l'allarme rimane attivo oltre il group_interval invierà notifiche ripetute a questo intervallo di tempo
+route:  #incoming alerts are processed in this section
+  group_by: ['alertname','severity']  #alerts grouped by the alertname label
+  group_wait: 5s #how long alertmanager waits before sending the notification for a new group of alerts
+  group_interval: 10s  #time interval for subsequent notifications for a group of alerts
+  repeat_interval: 10s #if the alert remains active beyond the group_interval, it will send repeated notifications at this time interval
   receiver: 'email'
 
 receivers:
-- name: 'email' #nome referenziato in route 
+- name: 'email' #name referenced in route
   email_configs:
-  - to: 'xxxxxxxxxx@gmail.com' #indirzzo email del destinatario a cui arrivano le notifiche 
-
-
-
+  - to: 'xxxxxxxxxx@gmail.com' #email address of the recipient who receives the notifications
